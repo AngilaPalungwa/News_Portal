@@ -14,7 +14,7 @@ class AdminDashboardController extends Controller
      */
     public function index()
     {
-        return view('admindashboard::index');
+        return view('backend.layout.master');
     }
 
     /**

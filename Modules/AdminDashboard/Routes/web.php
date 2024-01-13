@@ -11,6 +11,6 @@
 |
 */
 
-Route::prefix('admindashboard')->group(function() {
-    Route::get('/', 'AdminDashboardController@index');
+Route::group(['prefix'=>'admindahboard','middleware'=>'admin'],function() {
+    Route::get('/', 'AdminDashboardController@index')->name('admin.dashboard');
 });
