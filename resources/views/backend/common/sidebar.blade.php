@@ -42,14 +42,14 @@
                     <i class="nav-icon fas fa-solid fa-gear"></i>
                     <p>System Setting</p>
                 </a>
-            </li>
+            </li> --}}
             <li class="nav-item">
-                    <a href="{{ route('users.index') }}" class="nav-link">
+                    <a href="{{ route('user.index') }}" class="nav-link">
                     <i class="nav-icon fas fas fa-user"></i>
                     <p>Users</p>
                 </a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                     <a href="{{ route('category') }}" class="nav-link">
                     <i class="nav-icon fas fa-solid fa-list "></i>
                     <p>Category</p>
@@ -107,7 +107,7 @@
                         </a>
                     </li>
                 </ul>
-            </li> --}}
+            </li>  --}}
 
         </ul>
     </nav>
