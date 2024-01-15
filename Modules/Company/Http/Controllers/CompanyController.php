@@ -2,6 +2,7 @@
 
 namespace Modules\Company\Http\Controllers;
 
+use App\Models\Company;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -14,7 +15,8 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        return view('company::index');
+        $company=Company::first();
+        return view('company::index',compact('company'));
     }
 
     /**
@@ -33,7 +35,34 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required|email',
+            'contact'=>'required',
+            'address'=>'required',
+        ]);
+        if($request->has('logo')&&$request->file('logo')){
+            $file=$request->file('logo');
+            $newName=time() . $file->getCLientOriginalName();
+            $path=public_path('/uploads');
+            $file->move($path,$newName);
+        }
+        $data=[
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'address' => $request->address,
+            'contact'=>$request->contact,
+            'aboutus'=>$request->aboutus,
+            'facebook'=>$request->facebook,
+            'linkedin'=>$request->linkedin,
+            'youtube'=>$request->youtube,
+            'twitter'=>$request->twitter,
+            'logo'=>$newName,
+        ];
+        Company::insert($data);
+
+        $request->session()->flash('success','Company Added Successfully');
+        return  redirect()->route('company.index');
     }
 
     /**
@@ -53,7 +82,12 @@ class CompanyController extends Controller
      */
     public function edit($id)
     {
-        return view('company::edit');
+        if(!$id){
+            session()->flash('error', 'something went wrong');
+            return redirect()->route('users.index');
+        }
+        $company=Company::find($id);
+        return view('company::edit',compact('company'));
     }
 
     /**
@@ -64,7 +98,35 @@ class CompanyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required|email',
+            'contact'=>'required',
+            'address'=>'required',
+        ]);
+        if($request->has('logo')&&$request->file('logo')){
+            $file=$request->file('logo');
+            $newName=time() . $file->getCLientOriginalName();
+            $path=public_path('/uploads');
+            $file->move($path,$newName);
+        }
+        $data=[
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'address' => $request->address,
+            'contact'=>$request->contact,
+            'aboutus'=>$request->aboutus,
+            'facebook'=>$request->facebook,
+            'linkedin'=>$request->linkedin,
+            'youtube'=>$request->youtube,
+            'twitter'=>$request->twitter,
+            'logo'=>$newName,
+        ];
+        $company=Company::find($id);
+       $company->update($data);
+
+        $request->session()->flash('success','Company Added Successfully');
+        return  redirect()->route('company.index');
     }
 
     /**
@@ -74,6 +136,18 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(!$id){
+            session()->flash('error', 'something went wrong');
+            return redirect()->route('users.index');
+        }
+        $company=Company::find($id);
+        if($company){
+            $company->delete();
+            session()->flash('success', 'Company Delete Successfully');
+            return redirect()->route('company.index');
+        }
+
+        session()->flash('error', 'Something went Wrong!!');
+        return redirect()->route('company.index');
     }
 }

@@ -37,12 +37,12 @@
                     <p>Website</p>
                 </a>
             </li>
-            {{-- <li class="nav-item">
-                <a href="{{ route('system.setting') }}" class="nav-link">
-                    <i class="nav-icon fas fa-solid fa-gear"></i>
-                    <p>System Setting</p>
+            <li class="nav-item">
+                <a href="{{ route('company.index') }}" class="nav-link">
+                    <i class="nav-icon fas fas fa-bars"></i>
+                    <p>Company Setting</p>
                 </a>
-            </li> --}}
+            </li>
             <li class="nav-item">
                     <a href="{{ route('user.index') }}" class="nav-link">
                     <i class="nav-icon fas fas fa-user"></i>

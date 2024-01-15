@@ -48,13 +48,10 @@
                     <div class="card-tools">
                         <div class="row">
                             <div class="col">
-
-
                                 <div class="input-group input-group-sm m-1" style="width: 150px;">
                                     <form action="{{ route('user.index') }}" method="GET">
                                         @csrf
                                         <input type="text" name="search" class="form-control float-right" placeholder="Search">
-
                                         <div class="input-group-append">
                                             <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
                                         </div>

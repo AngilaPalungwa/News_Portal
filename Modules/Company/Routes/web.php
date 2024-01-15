@@ -11,6 +11,9 @@
 |
 */
 
+
+
 Route::prefix('company')->group(function() {
-    Route::get('/', 'CompanyController@index');
+        Route::resource('company',CompanyController::class);
+
 });
