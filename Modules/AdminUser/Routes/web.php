@@ -18,4 +18,7 @@ Route::prefix('adminuser')->group(function() {
     Route::get('/user-edit/{id}', 'AdminUserController@edit')->name('user.edit');
     Route::post('/user-update/{id}', 'AdminUserController@update')->name('user.update');
     Route::get('/user-delete/{id}', 'AdminUserController@destroy')->name('user.delete');
+
+    Route::post('/reset', 'AdminUserController@reset')->name('user.password.reset');
+
 });

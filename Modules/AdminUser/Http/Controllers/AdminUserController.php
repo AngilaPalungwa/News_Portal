@@ -2,11 +2,13 @@
 
 namespace Modules\AdminUser\Http\Controllers;
 
+use App\Mail\PasswordResetMail;
 use App\Models\User;
 use App\Models\UserDetails;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Mail;
 
 class AdminUserController extends Controller
 {
@@ -51,7 +53,6 @@ class AdminUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            // 'status'=>$request->status??'active',
         ];
         $user_id = User::insertGetId($userData);
         $image = '';
@@ -81,9 +82,31 @@ class AdminUserController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function show($id)
+    public  function  reset(Request  $request)
     {
-        return view('adminuser::show');
+       $id =  $request->id;
+       $password =  $request->password;
+        try {
+            if(!$id || !$password){
+                $request->session()->flash('error','Something went wrong');
+                return redirect()->route('user.index');
+            }
+
+            $user = User::find($id);
+            if($user){
+                $user->update(['password' => bcrypt($password)]);
+                Mail::to($user->email)->send
+                (new PasswordResetMail($password));
+                $request->session()->flash('success','Password Reset Successfull');
+                return redirect()->route('user.index');
+            }
+
+            $request->session()->flash('error','User Not found');
+            return redirect()->route('user.index');
+        }catch (\Exception $exception){
+            dd($exception);
+        }
+
     }
 
     /**
