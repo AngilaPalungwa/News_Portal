@@ -3,5 +3,6 @@
     "AdminLogin": true,
     "AdminUser": true,
     "Company": true,
-    "Category": true
+    "Category": true,
+    "Post": true
 }
