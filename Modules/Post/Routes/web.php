@@ -11,6 +11,8 @@
 |
 */
 
+// use Modules\Post\Http\Controllers\PostController;
+
 Route::prefix('post')->group(function() {
-    Route::get('/', 'PostController@index');
+    Route::resource('post', PostController::class);
 });

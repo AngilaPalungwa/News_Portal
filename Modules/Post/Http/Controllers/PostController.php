@@ -2,9 +2,12 @@
 
 namespace Modules\Post\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -14,7 +17,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('post::index');
+        $posts=Post::all();
+        return view('post::index',compact('posts'));
     }
 
     /**
@@ -23,7 +27,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('post::create');
+        $categories=Category::all();
+        return view('post::create',compact('categories'));
     }
 
     /**
@@ -33,7 +38,27 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title'=>'required',
+            'description'=>'required',
+            'image'=>'required',
+        ]);
+        $post=new Post();
+        $post->title=$request->title;
+        $post->sub_title=$request->sub_title;
+        $post->description=$request->description;
+        $post->slug=Str::slug($request->title);
+        if($request->hasFile('image'))
+        {
+            $file=$request->image;
+            $newname=time() . $file->getCLientOriginalName();
+            $file->move("images",$newname);
+            $post->image="images/$newname";
+        }
+        $post->save();
+        $request->session()->flash('success','Post Added Successfully');
+        $post->categories()->attach($request->category_id);
+        return  redirect()->route('post.index');
     }
 
     /**
@@ -53,7 +78,13 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        return view('post::edit');
+        if(!$id){
+            session()->flash('error','Something is wrong');
+            return redirect()->route('post.index');
+        }
+        $post=Post::find($id);
+        $categories=Category::all();
+        return view('post::edit',compact('post','categories'));
     }
 
     /**
@@ -64,7 +95,27 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title'=>'required',
+            'description'=>'required',
+            'image'=>'required',
+        ]);
+        $post=Post::find($id);
+        $post->title=$request->title;
+        $post->sub_title=$request->sub_title;
+        $post->description=$request->description;
+        $post->slug=Str::slug($request->title);
+        if($request->hasFile('image'))
+        {
+            $file=$request->image;
+            $newname=time() . $file->getCLientOriginalName();
+            $file->move("images",$newname);
+            $post->image="images/$newname";
+        }
+        $post->update();
+        $request->session()->flash('success','Post Updated Successfully');
+        $post->categories()->sync($request->category_id);
+        return  redirect()->route('post.index');
     }
 
     /**
@@ -74,6 +125,14 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(!$id){
+            session()->flash('error','Something is wrong');
+            return redirect()->route('post.index');
+        }
+        $post=Post::find($id);
+        $post->categories()->detach();
+        $post->delete();
+        session()->flash('success','Post Deleted Successfully');
+        return  redirect()->route('post.index');
     }
 }
