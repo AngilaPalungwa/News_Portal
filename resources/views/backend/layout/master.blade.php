@@ -33,7 +33,9 @@
 <div class="wrapper">
 
   <!-- Navbar -->
- @include('backend.common.navbar')
+  <div class="container-fluid">
+      @include('backend.common.navbar')
+  </div>
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
@@ -61,7 +63,10 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-    @yield('content')
+    <div class="container-fluid pt-4 bg-light">
+
+        @yield('content')
+    </div>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->

@@ -2,5 +2,6 @@
     "AdminDashboard": true,
     "AdminLogin": true,
     "AdminUser": true,
-    "Company": true
+    "Company": true,
+    "Category": true
 }

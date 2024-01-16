@@ -49,13 +49,13 @@
                     <p>Users</p>
                 </a>
             </li>
-            {{-- <li class="nav-item">
-                    <a href="{{ route('category') }}" class="nav-link">
+            <li class="nav-item">
+                    <a href="{{ route('category.index') }}" class="nav-link">
                     <i class="nav-icon fas fa-solid fa-list "></i>
                     <p>Category</p>
                 </a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                     <a href="{{ route('post') }}" class="nav-link">
                     <i class="nav-icon fas fa-regular fa-newspaper"></i>
                     <p>Posts</p>
@@ -107,7 +107,7 @@
                         </a>
                     </li>
                 </ul>
-            </li>  --}}
+            </li> --}}
 
         </ul>
     </nav>
