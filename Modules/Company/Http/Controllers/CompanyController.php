@@ -113,19 +113,19 @@ class CompanyController extends Controller
         $data=[
             'name'=>$request->name,
             'email'=>$request->email,
-            'address' => $request->address,
             'contact'=>$request->contact,
+            'address' => $request->address,
+            'logo'=>$newName,
             'aboutus'=>$request->aboutus,
             'facebook'=>$request->facebook,
             'linkedin'=>$request->linkedin,
             'youtube'=>$request->youtube,
             'twitter'=>$request->twitter,
-            'logo'=>$newName,
         ];
         $company=Company::find($id);
-       $company->update($data);
+        $company->update($data);
 
-        $request->session()->flash('success','Company Added Successfully');
+        $request->session()->flash('success','Company Updated Successfully');
         return  redirect()->route('company.index');
     }
 

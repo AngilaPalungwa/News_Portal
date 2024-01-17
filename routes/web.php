@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[PageController::class,'index'])->name('home');
+Route::get('/news-category/{slug}', [PageController::class, 'category'])->name('categoryPage');
+Route::get('/news/{slug}', [PageController::class, 'single'])->name('postDetail');
+
