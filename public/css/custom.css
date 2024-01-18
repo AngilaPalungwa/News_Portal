@@ -12,6 +12,9 @@ a{
 .pcolor{
     background-color: #007ba5;
 }
+.textpcolor{
+    color: #007ba5!important;
+}
 .footerColor{
     background-color: #035b78;
 }
@@ -25,6 +28,10 @@ a{
     background-color: #fa8331;
     color: #fff;
 }
+/* .btn-hover:hover{
+    background-color: #fa8331;
+    color: #fff;
+} */
 
 .widget {
     background: #f2f2f2;

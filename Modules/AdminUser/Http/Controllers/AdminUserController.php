@@ -58,7 +58,7 @@ class AdminUserController extends Controller
         $image = '';
         if ($request->has('image') && $request->file('image')) {
             $file = $request->file('image');
-            $newName = time() . $file->getClientOriginalExtension();
+            $newName=time() .'.'. $file->getClientOriginalExtension();
             $path = public_path('images/');
             $file->move($path, $newName);
             $image = $newName;
@@ -140,26 +140,24 @@ class AdminUserController extends Controller
         if($user){
             $request->validate([
                 'name' => 'required',
-                'email' => 'required|email|unique:users,email',
+                'email' => 'required|email',
             ]);
             $userData = [
                 'name' => $request->name,
                 'email' => $request->email,
             ];
             $user->update($userData);
-            $image = '';
             if ($request->has('image') && $request->file('image')) {
                 $file = $request->file('image');
-                $newName = time() . $file->getClientOriginalExtension();
+                $newName=time() .'.'. $file->getClientOriginalExtension();
                 $path = public_path('images/');
                 $file->move($path, $newName);
-                $image = $newName;
             }
             $userDetailData = [
                 'user_id' =>$id,
                 'phone' => $request->phone,
                 'address' => $request->address,
-                'image' => $image,
+                'image' => $newName,
             ];
             UserDetails::where('user_id', $id)->update($userDetailData);
             $request->session()->flash('Success', 'User Updated successfully');

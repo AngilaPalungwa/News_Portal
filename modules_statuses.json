@@ -4,5 +4,7 @@
     "AdminUser": true,
     "Company": true,
     "Category": true,
-    "Post": true
+    "Post": true,
+    "Login": true,
+    "RegisterController": true
 }

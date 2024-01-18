@@ -39,7 +39,7 @@
                         </div>
                         <div class="form-group">
                             <label for="">Phone <span class="text-danger">*</span></label>
-                            <input type="text" name="mobile" id="phpne" class="form-control"
+                            <input type="text" name="phone" id="phpne" class="form-control"
                                 placeholder="Enter your phone" value="{{  $user->userDetail->phone }}">
                             @if ($errors->first('mobile'))
                                 <span style="color: red">{{ $errors->first('phone') }}</span>
