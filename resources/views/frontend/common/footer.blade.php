@@ -38,7 +38,7 @@
                         <p >Phone: {{ $company->contact }}</p>
                         <p >For Advertisement</p>
                         <p >Phone: {{ $company->contact}}</p>
-                        <form method="post" action="/subscribe">
+                        <form method="post" action="{{ route('subscriber') }}">
                             @csrf
                             <input type="email" name="email" placeholder="Enter your Email">
                             <button type="submit">Subscribe</button>

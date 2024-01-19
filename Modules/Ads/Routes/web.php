@@ -12,8 +12,5 @@
 */
 
 Route::prefix('ads')->group(function() {
-    // Route::get('/', 'AdsController@index')->name('ads');
-    // Route::get('/ads-create', 'AdsController@create')->name('ads.create');
-    // Route::post('/ads-create', 'AdsController@create')->name('ads.create');
     Route::resource('ads', AdsController::class);
 });
