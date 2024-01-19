@@ -6,5 +6,6 @@
     "Category": true,
     "Post": true,
     "Login": true,
-    "RegisterController": true
+    "RegisterController": true,
+    "Ads": true
 }

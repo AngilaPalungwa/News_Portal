@@ -1,19 +1,21 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-        <img src="{{ "/uploads/$company->logo" }}" alt="AdminLTE Logo" class="brand-image  "
-            style="opacity: .8">
+        <img src="{{ "/uploads/$company->logo" }}" alt="AdminLTE Logo" class="brand-image  " style="opacity: .8">
 
         <span class=" font-weight-light">{{ $company->name }}</span>
     </a>
 
     <!-- Sidebar -->
+    @php
+        $admin = Auth::guard('admin')->user();
+        $adminDetail = $admin->userDetail;
+    @endphp
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{ url("/images/".Auth::guard('admin')->user()->image) }}" class="img-circle elevation-2"
-                    alt="User Image">
+                <img src="{{ asset("/images/$adminDetail->image") }}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
                 <a href="#"
@@ -64,53 +66,19 @@
                         <p>Posts</p>
                     </a>
                 </li>
-                {{-- <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-copy"></i>
-                    <p>
-                        Layout Options
-                        <i class="fas fa-angle-left right"></i>
-                    </p>
-                </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="pages/layout/top-nav.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Top Navigation</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/layout/boxed.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Boxed</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/layout/fixed-sidebar.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Fixed Sidebar</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/layout/fixed-topnav.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Fixed Navbar</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/layout/fixed-footer.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Fixed Footer</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/layout/collapsed-sidebar.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Collapsed Sidebar</p>
-                        </a>
-                    </li>
-                </ul>
-            </li> --}}
+                <li class="nav-item">
+                    <a href="{{ route('ads.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-regular fa-newspaper"></i>
+                        <p>ADs</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link">
+                        <i class="nav-icon fas fa-regular fa-newspaper"></i>
+                        <p>Subscriber</p>
+                    </a>
+                </li>
+
 
             </ul>
         </nav>
