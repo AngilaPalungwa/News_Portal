@@ -38,7 +38,7 @@
                                             <td>{{ $ad->link }}</td>
 
                                             <td>
-                                                <form action="{{ route('ads.delete', $ad->id) }}" method="post">
+                                                <form action="{{ route('ads.destroy', $ad->id) }}" method="post">
                                                     @csrf
                                                     @method('delete')
                                                     <a href="{{ route('ads.edit', $ad->id) }}"

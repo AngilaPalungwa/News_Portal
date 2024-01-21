@@ -44,7 +44,7 @@ class CompanyController extends Controller
         if($request->has('logo')&&$request->file('logo')){
             $file=$request->file('logo');
             $newName=time() . $file->getCLientOriginalName();
-            $path=public_path('/uploads');
+            $path=public_path('/images/company');
             $file->move($path,$newName);
         }
         $data=[
@@ -107,7 +107,7 @@ class CompanyController extends Controller
         if($request->has('logo')&&$request->file('logo')){
             $file=$request->file('logo');
             $newName=time() . $file->getCLientOriginalName();
-            $path=public_path('/uploads');
+            $path=public_path('/images/company');
             $file->move($path,$newName);
         }
         $data=[

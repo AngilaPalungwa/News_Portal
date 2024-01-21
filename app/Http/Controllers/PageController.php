@@ -10,24 +10,38 @@ class PageController extends Controller
 {
     public function index()
     {
-        // latest news
+        // latest news at the top
         $posts = Post::orderBy('id', 'desc')->limit(2)->get();
+        //Latest  updates
+        $latest = Post::orderBy('id', 'desc')->limit(4)->get();
 
         // Policits
         $category = Category::where('slug', 'politics')->first();
         $politics = $category->posts;
-        return view('frontend.pages.home',compact('posts','politics'));
+        // Entertainment
+        $category = Category::where('slug', 'entertainment')->first();
+        $entertainment = $category->posts;
+        // International
+        $category = Category::where('slug', 'international')->first();
+        $international = $category->posts;
+
+        // Ideas/Literature
+        $category = Category::where('slug', 'literature')->first();
+        $literature = $category->posts;
+        return view('frontend.pages.home', compact('posts', 'politics', 'latest','literature','entertainment','international'));
     }
     public function category($slug)
     {
         $category = Category::where('slug', $slug)->first();
         $posts = $category->posts;
-        return view('frontend.pages.category', compact( 'posts'));
+        return view('frontend.pages.category', compact('posts'));
     }
     public function single($slug)
     {
         $post = Post::where('slug', $slug)->first();
-        return view('frontend.pages.single', compact('post'));
-
+        $post->increment('views');
+        //Latest Top 3 Post
+        $latest = Post::orderBy('id', 'desc')->limit(4)->get();
+        return view('frontend.pages.single', compact('post', 'latest'));
     }
 }

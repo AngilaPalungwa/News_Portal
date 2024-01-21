@@ -10,7 +10,7 @@
                     @if ($index == 0)
                         <li class="nav-item">
                             <a class="nav-link active fs-5 pe-5 py-3 text-white" aria-current="page"
-                                href="/">{{ $category->name }}</a>
+                                href="/">Home</a>
                         </li>
                     @else
                     <li class="nav-item">
@@ -27,11 +27,4 @@
     </div>
 </nav>
 
-  {{-- <!-- ===== HEADER AD ===== -->
-  <div class="container py-5">
-    @if (!empty($header_ads))
-    <a href="{{ $header_ads->link }}" target="_blank">
-        <img src="{{ asset($header_ads->image)  }}" width="100%" alt="">
-    </a>
-    @endif
-  </div> --}}
+

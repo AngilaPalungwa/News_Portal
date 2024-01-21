@@ -1,10 +1,14 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-        <img src="{{ "/uploads/$company->logo" }}" alt="AdminLTE Logo" class="brand-image  " style="opacity: .8">
 
-        <span class=" font-weight-light">{{ $company->name }}</span>
-    </a>
+    <div>
+
+        <a href="/admindashboard" class="brand-link">
+            <img src="{{ asset("/images/company/$company->logo") }}" alt="AdminLTE Logo" class="brand-image  " style="opacity: .8">
+
+            <span class=" font-weight "> {{ $company->name }}</span>
+        </a>
+    </div>
 
     <!-- Sidebar -->
     @php
@@ -30,8 +34,9 @@
                 <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
                 <li class="nav-item  ">
-                    <a href="/adminDashboard" class="nav-link ">
+                    <a href="/admindashboard" class="nav-link ">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
+
                         <p>Dashboard</p>
                     </a>
 
@@ -44,7 +49,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('company.index') }}" class="nav-link">
-                        <i class="nav-icon fas fas fa-bars"></i>
+                        <i class="nav-icon fas  fa-solid fa-wrench"></i>
                         <p>Company Setting</p>
                     </a>
                 </li>
@@ -68,13 +73,13 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('ads.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-regular fa-newspaper"></i>
+                        <i class="nav-icon fas fa-solid fa-audio-description"></i>
                         <p>ADs</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('subscribe') }}" class="nav-link">
-                        <i class="nav-icon fas fa-regular fa-newspaper"></i>
+                        <i class="nav-icon fas fa-solid fa-user-plus"></i>
                         <p>Subscriber</p>
                     </a>
                 </li>

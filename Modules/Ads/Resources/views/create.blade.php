@@ -26,6 +26,8 @@
                             <option value="header_ads">Header Ads (1900 x 300)</option>
                             <option value="topbar_ads">Topbar Ads (1400 X 150)</option>
                             <option value="sidebar_ads">Sidebar Ads (500 x 500)</option>
+                            <option value="bottom_ads">Bottom Ads (1900 x 300)</option>
+
                         </select>
                         @if($errors->first('ads_category'))
                         <span style="color: red">{{ $errors->first('ads_category') }}</span>
