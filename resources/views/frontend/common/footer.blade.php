@@ -6,7 +6,7 @@
                 <div class="card rounded-0 p-3 ">
                     <a href="/">
                         <div class="card-body  text-center ">
-                            <img src="{{ asset("/uploads/$company->logo") }}" width="100%" alt="" class="mb-2">
+                            <img src="{{ asset("/images/company/$company->logo") }}" width="100%" alt="" class="mb-2">
                             <p class="text-secondary ">{{ $company->aboutus }}</p>
 
                         </div>

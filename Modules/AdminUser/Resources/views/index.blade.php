@@ -41,30 +41,20 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Users</h3>
-
-
-                    <div class="card-tools">
-                        <div class="row">
-                            <div class="col">
-                                <div class="input-group input-group-sm m-1" style="width: 150px;">
-                                    <form action="{{ route('user.index') }}" method="GET">
-                                        @csrf
-                                        <input type="text" name="search" class="form-control float-right" placeholder="Search">
-                                        <div class="input-group-append">
-                                            <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <a href="{{ route('user.create') }}" class="float-end btn btn-info"><i
-                                        class="fas fa-plus"></i><span class="hide-menu ps-2">Add Users </span></a>
+                <div class="card-header m-3 bg-white">
+                    <form class="form-inline ml-3" action="{{ route('user.index') }}" method="GET">
+                        <span class="fs-4 fw-bold">Users</span>
+                        <div class="input-group input-group-sm ml-auto">
+                            <input class="form-control form-control-navbar" type="search" name="search" placeholder="Search" aria-label="Search">
+                            <div class="input-group-append">
+                                <button class="btn btn-light btn-outline-secondary mr-2" type="submit">
+                                    <i class="fas fa-search "></i>
+                                </button>
                             </div>
                         </div>
-
-                    </div>
+                        <a href="{{ route('user.create') }}" class="float-end btn btn-info"><i class="fas fa-plus"></i><span
+                                class="hide-menu ps-2">Add Users </span></a>
+                    </form>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body table-responsive p-0">
@@ -104,6 +94,8 @@
                     </table>
                 </div>
                 <!-- /.card-body -->
+                {{ $users->links() }}
+
             </div>
             <!-- /.card -->
         </div>

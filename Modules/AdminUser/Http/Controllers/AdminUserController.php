@@ -25,7 +25,7 @@ class AdminUserController extends Controller
             $data['users']=$query->get();
             return view('adminuser::index',$data);
         }
-        $users = User::with('userDetail')->get();
+        $users = User::with('userDetail')->paginate(10);;
         return view('adminuser::index', compact('users'));
     }
 

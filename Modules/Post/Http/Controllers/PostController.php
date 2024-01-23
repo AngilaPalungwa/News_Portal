@@ -15,9 +15,16 @@ class PostController extends Controller
      * Display a listing of the resource.
      * @return Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        $posts=Post::all();
+        $search=$request->search;
+        if($search){
+            $query=Post::query()->where('title','LIKE','%'.$search.'%')
+                                ->orWhere('description','LIKE','%'.$search.'%');
+            $data['posts']=$query->get();
+            return view('post::index',$data);
+        }
+        $posts=Post::latest()->paginate(12);
         return view('post::index',compact('posts'));
     }
 

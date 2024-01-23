@@ -13,10 +13,20 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card border-right-0">
-                <div class="card-header ">
-                    <span class="fs-4 fw-bold">Posts</span>
-                    <a href="{{ route('post.create') }}" class="float-end btn btn-info"><i class="fas fa-plus"></i><span
-                        class="hide-menu ps-2">Add Post </span></a>
+                <div class="card-header m-3 bg-white">
+                    <form class="form-inline ml-3" action="{{ route('post.index') }}" method="GET">
+                        <a href="{{ route('post.index') }}" class="text-decoration-none text-black"><span class="fs-4 fw-bold ">Posts</span></a>
+                        <div class="input-group input-group-sm ml-auto">
+                            <input class="form-control form-control-navbar" type="search" name="search" placeholder="Search" aria-label="Search">
+                            <div class="input-group-append">
+                                <button class="btn btn-light btn-outline-secondary mr-2" type="submit">
+                                    <i class="fas fa-search "></i>
+                                </button>
+                            </div>
+                        </div>
+                        <a href="{{ route('post.create') }}" class="float-end btn btn-info"><i class="fas fa-plus"></i><span
+                                class="hide-menu ps-2">Add Users </span></a>
+                    </form>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -45,6 +55,8 @@
 
                 </div>
             </div>
+            {{ $posts->links() }}
+
         </div>
     </div>
 </div>

@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Ads;
 use App\Models\Category;
 use App\Models\Company;
+use Illuminate\Pagination\Paginator;
 use View;
 use Illuminate\Support\ServiceProvider;
 
@@ -28,6 +29,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Paginator::useBootstrap();
+
         view()->composer(['backend.common.sidebar', 'backend.common.navbar', 'backend.layout.master'], function ($view) {
             $data['company'] = Company::first();
             $view->with($data);

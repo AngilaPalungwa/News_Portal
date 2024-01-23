@@ -81,7 +81,7 @@
                     <div class="col-md-6">
                         <div class="row">
                             @foreach ($politics as $index => $post)
-                                @if ($index > 0)
+                                @if ($index > 0 && $index <5)
                                     <div class="col-md-12 ">
                                         <a href="{{ route('postDetail', $post->slug) }}">
                                             <div class="d-flex">
@@ -195,7 +195,7 @@
                     <div class="col-md-6">
                         <div class="row">
                             @foreach ($entertainment as $index => $post)
-                                @if ($index > 0)
+                                @if ($index > 0 && $index <5)
                                     <div class="col-md-12 ">
                                         <a href="{{ route('postDetail', $post->slug) }}">
                                             <div class="d-flex">
@@ -283,7 +283,7 @@
             <div class="col-md-4">
                 <div class="row">
                     @foreach ($international as $index => $post)
-                        @if ($index == 0)
+                        @if ($index ==1)
                             <div class="col-md-12">
                                 <a href="{{ route('postDetail', $post->slug) }}">
                                     <div class="card border-0 mb-3">
@@ -304,7 +304,7 @@
             <div class="col-md-4">
                 <div class="row">
                     @foreach ($international as $index => $post)
-                        @if ($index > 0)
+                        @if ($index>1 &&$index<5)
                             <div class="col-md-12 ">
                                 <a href="{{ route('postDetail', $post->slug) }}">
                                     <div class="d-flex">
@@ -373,7 +373,7 @@
                             <hr>
                         </div>
 
-                    @elseif ($index > 0)
+                    @elseif ($index > 0 && $index <5)
                         <div class="col-md-12 ">
                             <a href="{{ route('postDetail', $post->slug) }}">
                                 <div class="d-flex">
@@ -401,7 +401,7 @@
                    <h5 class="fw-bold p-1">Health/Education</h5>
                     <a href="" class="scolor fw-bold ">More +</a>
                 </div>
-                @foreach ($literature as $index => $post)
+                @foreach ($healthEdu as $index => $post)
                     @if ($index == 0)
                         <div class="col-md-12">
                             <a href="{{ route('postDetail', $post->slug) }}">
@@ -415,7 +415,7 @@
                             <hr>
                         </div>
 
-                    @elseif ($index > 0)
+                    @elseif ($index > 0 && $index <5)
                         <div class="col-md-12 ">
                             <a href="{{ route('postDetail', $post->slug) }}">
                                 <div class="d-flex">
@@ -443,7 +443,7 @@
                    <h5 class="fw-bold p-1">Business</h5>
                     <a href="" class="scolor fw-bold ">More +</a>
                 </div>
-                @foreach ($literature as $index => $post)
+                @foreach ($business as $index => $post)
                     @if ($index == 0)
                         <div class="col-md-12">
                             <a href="{{ route('postDetail', $post->slug) }}">
@@ -457,7 +457,7 @@
                             <hr>
                         </div>
 
-                    @elseif ($index > 0)
+                    @elseif ($index > 0 && $index <5)
                         <div class="col-md-12 ">
                             <a href="{{ route('postDetail', $post->slug) }}">
                                 <div class="d-flex">

@@ -23,7 +23,7 @@ class CategoryController extends Controller
             $data['categories']=$query->get();
             return view('category::index',$data);
         }
-        $categories=Category::latest()->paginate(20);
+        $categories=Category::latest()->paginate(10);
         return view('category::index',compact('categories'));
     }
 
