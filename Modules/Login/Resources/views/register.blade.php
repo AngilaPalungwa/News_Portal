@@ -51,14 +51,11 @@
                             @endif
                         </div>
                         <div>
-                            <button class="btn pcolorbtn-primary pcolor  text-white fw-semibold "
+                            <button class="btn btn-primary pcolorbtn-primary pcolor  text-white fw-semibold "
                                 type="submit">Register</button>
                         </div>
                     </form>
-                    <div class="mt-2">
 
-                        <a href="{{ route('login.forget') }}" >Forgot Password?</a>
-                    </div>
                 </div>
             </div>
 

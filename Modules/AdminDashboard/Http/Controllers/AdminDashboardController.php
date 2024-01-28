@@ -2,6 +2,9 @@
 
 namespace Modules\AdminDashboard\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Post;
+use App\Models\User;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -14,7 +17,10 @@ class AdminDashboardController extends Controller
      */
     public function index()
     {
-        return view('backend.layout.master');
+        $users = User::with('userDetail');
+        $categories=Category::latest();
+        $posts=Post::latest();
+        return view('admindashboard::index' ,compact('users','categories','posts'));
     }
 
     /**

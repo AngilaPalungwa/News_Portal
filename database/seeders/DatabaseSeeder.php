@@ -22,8 +22,5 @@ class DatabaseSeeder extends Seeder
         UserDetails::factory(10)->create();
         $this->call(CategorySeeder::class);
         Category::factory(2)->create();
-
-
-
     }
 }
