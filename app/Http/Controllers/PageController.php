@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
+    // Home Page
     public function index()
     {
         // latest news at the top
@@ -35,18 +36,22 @@ class PageController extends Controller
         // Heath/Education
         $category = Category::where('slug', 'health-science')->first();
         $healthEdu = $category->posts;
-        
+
         // Business
         $category = Category::where('slug', 'business')->first();
         $business = $category->posts;
         return view('frontend.pages.home', compact('posts', 'politics', 'latest','literature','entertainment','international','healthEdu','business'));
     }
+
+    // Category Page
     public function category($slug)
     {
         $category = Category::where('slug', $slug)->first();
         $posts = $category->posts;
         return view('frontend.pages.category', compact('posts'));
     }
+
+    // News Detail Page
     public function single($slug)
     {
         $post = Post::where('slug', $slug)->first();

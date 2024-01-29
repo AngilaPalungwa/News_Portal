@@ -23,13 +23,15 @@ class SubscriberController extends Controller
         Mail::to($request->email)->send(new SubscriberMail());
         $request->session()->flash('success','Subscribed');
         return redirect()->route('home');
-
     }
+    
     public function subscribe()
     {
         $subscribers=Subscriber::all();
         return view('backend.subscribe.index',compact('subscribers'));
     }
+
+    // Notification via mail
     public function event()
     {
         $notice=[
